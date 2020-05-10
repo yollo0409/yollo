@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style:none;
+        }
+        li {
+            margin:20px;
+        }
+        li label {
+            width:80px;
+            float:left;
+        }
+        fieldset {
+            margin:15px;
+        }
+    </style>
+    <script src="js/jquery-3.5.1.js"></script>
+    <script>
+
+        $(function(){
+           var DEFAULT_SIZE = 33*2; 
+           var DEFAULT_OPTION = 5;
+           var BASIC_PRICE = 5000;
+           var ADDTIONAL_PRICE = 500;
+
+       
+           var resultStr="";
+           var addtionalOption=0, totaAdditionalOption=0, temp=0, basicOption=0, totalPrice;
+           var width, height;
+
+           $("#select").click(function(){
+               width= Number($("#width").val());
+               height=Number($("#height").val());
+               if(width ==0 || height ==0)
+               {
+                   alert("가로/세로 길이를 입력해 주세요.");
+                   return;
+               }
+                 temp = (width  + height)-DEFAULT_SIZE;
+                if(temp < 0)
+                    temp = 0; 
+
+                var number =Number($("#number").val());
+                
+                additionalOption = (Math.round(temp/10)*10/DEFAULT_OPTION)*number;
+                if(basicOption!=0) 
+                    resultStr += "+";
+                
+                basicOption += number;
+                totaAdditionalOption += additionalOption;
+                resultStr += totaAdditionalOption;
+               
+                totalPrice = basicOption*BASIC_PRICE + totaAdditionalOption*ADDTIONAL_PRICE;
+                $("#addtionalOption").text(resultStr+"(="+totaAdditionalOption+"개)");
+                $("#basicOption").text(basicOption+"(개)");
+                $("#totalPrice").text(totalPrice.toLocaleString()+"(원)");
+
+                $("#width").val("0");
+                $("#height").val("0");
+                $("#number").val("1");
+             
+           });
+
+           $("#deleteAll").click(function(){
+                $("#width").val("0");
+                $("#height").val("0");
+                $("#number").val("1");
+                $("#addtionalOption").text(0+"(개)");
+                $("#basicOption").text(0+"(개)");
+                $("#totalPrice").text(0+"(원)");
+           });
+
+
+        });
+       
+    </script>
+</head>
+<body>
+
+    <h1>견적내기</h1>
+
+    <div class="container">
+        <p></p>
+        <form >
+            <fieldset>
+                <legend>가로(cm)/세로(cm)/갯수</legend>
+                <ul>
+                    <li> <label for ="width">가로: </label><input type="number" id="width"  placeholder="가로" max="100"></li>
+                    <li> <label for ="height">세로: </label><input type="number" id="height" placeholder="세로" max="100" required></li>
+                    <li><label for ="number">갯수: </label><input type="number" id="number" value="1" min="1" placeholder="갯수"><br></li>
+                    <input type="button"  id="select" value="입력한 정보로 선택">
+                    <input type="button"  id="deleteAll" value="모두 지우기">
+
+                   <li>추가옵션:  <span id="addtionalOption"></span></li>
+                   <li>기본옵션:<span id="basicOption"></span></li>
+                   <li>총상품 금액:<span id="totalPrice"></span></li>
+                   
+            </fieldset>
+        </form>
+        <br><br>
+        
+       
+    </div>
+</body>
+</html>
