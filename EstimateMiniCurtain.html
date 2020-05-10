@@ -90,15 +90,15 @@
             <fieldset>
                 <legend>가로(cm)/세로(cm)/갯수</legend>
                 <ul>
-                    <li> <label for ="width">가로: </label><input type="number" id="width"  placeholder="가로" max="100"></li>
-                    <li> <label for ="height">세로: </label><input type="number" id="height" placeholder="세로" max="100" required></li>
+                    <li> <label for ="width">가로: </label><input type="number" id="width"  value="0" max="100"></li>
+                    <li> <label for ="height">세로: </label><input type="number" id="height" value="0" max="100" required></li>
                     <li><label for ="number">갯수: </label><input type="number" id="number" value="1" min="1" placeholder="갯수"><br></li>
                     <input type="button"  id="select" value="입력한 정보로 선택">
                     <input type="button"  id="deleteAll" value="모두 지우기">
 
-                   <li>추가옵션:  <span id="addtionalOption"></span></li>
-                   <li>기본옵션:<span id="basicOption"></span></li>
-                   <li>총상품 금액:<span id="totalPrice"></span></li>
+                   <li>추가옵션:  <span id="addtionalOption">0개</span></li>
+                   <li>기본옵션:<span id="basicOption"> 0개</span></li>
+                   <li>총상품 금액:<span id="totalPrice"> 0원</span></li>
                    
             </fieldset>
         </form>
