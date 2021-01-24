@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>견적내기</title>
     <style>
+        .container{
+            width:860px;
+            margin: 0 auto;
+        }
         ul {
             list-style:none;
         }
@@ -41,6 +45,11 @@
                    alert("가로/세로 길이를 입력해 주세요.");
                    return;
                }
+
+               if(width>100 || height>100){
+                    alert("가로 또는 세로 길이 100cm 초과는 주문 불가입니다.");
+                   return;
+               }
                  temp = (width  + height)-DEFAULT_SIZE;
                 if(temp < 0)
                     temp = 0; 
@@ -63,7 +72,7 @@
                 $("#width").val("0");
                 $("#height").val("0");
                 $("#number").val("1");
-             
+                initOptions();
            });
 
            $("#deleteAll").click(function(){
@@ -73,19 +82,21 @@
                 $("#addtionalOption").text(0+"(개)");
                 $("#basicOption").text(0+"(개)");
                 $("#totalPrice").text(0+"(원)");
+                initOptions();
            });
 
 
+           function initOptions(){
+                resultStr="";
+                addtionalOption=0, totaAdditionalOption=0, temp=0, basicOption=0;
+           }
         });
        
     </script>
 </head>
 <body>
-
-    <h1>견적내기</h1>
-
     <div class="container">
-        <p></p>
+        <h1>견적내기</h1>
         <form >
             <fieldset>
                 <legend>가로(cm)/세로(cm)/갯수</legend>
@@ -93,7 +104,7 @@
                     <li> <label for ="width">가로: </label><input type="number" id="width"  value="0" max="100"></li>
                     <li> <label for ="height">세로: </label><input type="number" id="height" value="0" max="100" required></li>
                     <li><label for ="number">갯수: </label><input type="number" id="number" value="1" min="1" placeholder="갯수"><br></li>
-                    <input type="button"  id="select" value="입력한 정보로 선택">
+                    <input type="button"  id="select" value="계산하기">
                     <input type="button"  id="deleteAll" value="모두 지우기">
 
                    <li>추가옵션:  <span id="addtionalOption">0(개)</span></li>
@@ -102,9 +113,6 @@
                    
             </fieldset>
         </form>
-        <br><br>
-        
-       
     </div>
 </body>
 </html>
