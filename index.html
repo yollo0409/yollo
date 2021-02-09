@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY & Sewing - YOLLO</title>
+    <style>
+        #columns{
+            column-width: 300px;
+            column-gap: 15px;
+            padding:5%;
+        }
+        #columns figure{
+            display: inline-block;
+            border:1px solid rgba(0,0,0,0.2);
+            margin:0;
+            margin-bottom: 15px;
+            padding:2%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+         #columns figure iframe{
+            margin:0 auto;
+        } 
+
+        #columns figure figcaption{
+            border-top:1px solid rgba(0,0,0,0.2);
+            padding:10px;
+            margin:11 auto;
+        }
+      
+    </style>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
+    <script>
+        // function Item(caption, src){
+        //     this.caption = caption;
+        //     this.src = src;
+        // }
+        // function makeList(){
+        //     itemList.push(new Item("Upcycling Pants", "https://www.youtube.com/embed/iccbKleP0Hg"));
+        
+        // }
+        var itemList = [
+            {
+            "caption": "DIY mini bag with lining",
+            "src": "oJRYWDSIz6Q"
+            },
+            {
+            "caption": "DIY Old Jeans to a bag",
+            "src": "BSc1Gfr-Qro"
+            },
+            {
+            "caption": "DIY Old Jeans to a bag",
+            "src": "k2i0RVk-Zag"
+            },
+            {
+            "caption": "Upcycling Pants",
+            "src": "iccbKleP0Hg"
+            },
+            {
+            "caption": "DIY Knot Bag",
+            "src": "tQ_fEgML9UE"
+            },
+            {
+            "caption": "DIY triangle zipper pouch",
+            "src": "yI1snDuGmcU"
+            },
+            {
+            "caption": "Tutorial Mouth/Flu Mask",
+            "src": "UbFGN22QVL8"
+            },
+            {
+            "caption": "How to make a Corduroy long skirt ",
+            "src": "RUB9-socSKo"
+            },
+            {
+            "caption": "DIY a summer dress without a pattern",
+            "src": "x6bGUQn_PTs"
+            },
+        ];
+
+        /*
+            {
+            "caption": "",
+            "src": ""
+            },
+        */
+        $(function(){
+            $(itemList).each(function(i,obj){
+                var tag = '<figure><iframe width="300" height="300" src = '
+                + "https://www.youtube.com/embed/" +  obj.src
+                + ' frameborder="0" allow="accelerometer; autoplay; clipboard-write;'
+                +' encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                +'<figcaption>' +obj.caption +'</figcaption></figure>';
+                $("#columns").append(tag);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="columns">
+        <!-- <figure>
+            <iframe width="400" height="300" src="https://www.youtube.com/embed/et0z1opH2B0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <figcaption></figcaption>
+        </figure> -->
+
+    </div>
+
+    
+</body>
+</html>
